@@ -27,7 +27,11 @@ class Board
   end
 
   def winner
-    winninghash = board.select{ |_, row| row.compact.uniq.length == 1 }
+    horizontal
+  end
+
+  def horizontal
+    board.select{ |_, row| row.uniq.length == 1 }.values.first&.first
   end
 
   def display
