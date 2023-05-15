@@ -30,10 +30,16 @@ class Game
     end
 
     #restart if game ends.
+    display_stats
     start
   end
 
   def game_ends(board)
     board.winner || board.full_board?
+  end
+
+  def display_stats
+    p "YOUR WINNER!: PLAYER #{board.winner == 'x' ? 1 : 2}" if board.winner
+    board.display
   end
 end
