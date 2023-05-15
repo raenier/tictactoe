@@ -27,7 +27,7 @@ class Board
   end
 
   def winner
-    horizontal || vertical
+    horizontal || vertical || diagonal
   end
 
   def horizontal
@@ -43,6 +43,12 @@ class Board
         winner
       end
     winner.empty? ? nil : winner
+  end
+
+  def diagonal
+    %w{abc cba}.map do |reference|
+      (0..2).map {|index| board[reference[index].to_sym][index]}
+    end.select{ |row| row.uniq.length == 1 }.first&.first
   end
 
   def display
