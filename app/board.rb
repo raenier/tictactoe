@@ -29,4 +29,16 @@ class Board
   def winner
     winninghash = board.select{ |_, row| row.compact.uniq.length == 1 }
   end
+
+  def display
+    p '--------------'
+    board.each do |row|
+      p " #{cell(row, 0)} | #{cell(row, 1)} | #{cell(row, 2)} "
+      p '--------------'
+    end
+  end
+
+  def cell(row, index)
+    row.last[index] || row.first.to_s + (index + 1).to_s
+  end
 end
