@@ -27,11 +27,22 @@ class Board
   end
 
   def winner
-    horizontal
+    horizontal || vertical
   end
 
   def horizontal
     board.select{ |_, row| row.uniq.length == 1 }.values.first&.first
+  end
+
+  def vertical
+    winner=
+      (0..2).reduce('') do |winner, index|
+        if [ board[:a][index], board[:b][index], board[:c][index] ].uniq.length == 1 && !board[:a][index].nil?
+          winner = board[:a][index]
+        end
+        winner
+      end
+    winner.empty? ? nil : winner
   end
 
   def display

@@ -18,13 +18,14 @@ class Game
     #loop this until game ends
     until game_ends(board) do
       [player1, player2].each_with_index do |player, index|
-        break if game_ends(board)
         board.display
         p "Your move - player #{index + 1}: "
 
         until board.record(*player.move) do
           p 'Repeat, invalid move!: '
         end
+
+        break if game_ends(board)
       end
     end
 
