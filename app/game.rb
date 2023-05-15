@@ -29,9 +29,8 @@ class Game
       end
     end
 
-    #restart if game ends.
     display_stats
-    start
+    restart
   end
 
   def game_ends(board)
@@ -41,5 +40,10 @@ class Game
   def display_stats
     p "YOUR WINNER!: PLAYER #{board.winner == 'x' ? 1 : 2}" if board.winner
     board.display
+  end
+
+  def restart
+    self.board = Board.new()
+    start
   end
 end
